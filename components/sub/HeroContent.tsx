@@ -45,7 +45,7 @@ const HeroContent = () => {
               variants={slideInFromLeft(0.8)}
               className='text-lg text-gray-400 my-5 max-w-[600px]'
             >
-              &apos;I'm Abrar Ahmad Khateeb, but you can call me AK. I love coding and want to master everything before choosing my path because to be the best, you must know it all—and I'll always be a student, ready to learn and grow.
+              &apos;I Abrar Ahmad Khateeb, but you can call me AK. I love coding and want to master everything before choosing my path because to be the best, you must know it all—and I will always be a student, ready to learn and grow.
             </motion.p>
             <motion.a
           variants={slideInFromLeft(1)}
