@@ -2,19 +2,21 @@
 
 import { useState, useRef, Suspense } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
-import { Points, PointMaterial, Preload, PointsProps } from "@react-three/drei"; // Import PointsProps
+import { Points, PointMaterial, Preload } from "@react-three/drei";
 import * as THREE from "three"; // For THREE.Points type
 // @ts-expect-error - maath/random doesn't have TypeScript definitions
 import * as random from "maath/random/dist/maath-random.esm";
 
-// Use PointsProps from @react-three/drei to type props correctly
-const StarBackground = (props: PointsProps) => {
+// Define props type using Record with unknown instead of any
+type StarBackgroundProps = Record<string, unknown>;
+
+const StarBackground = (props: StarBackgroundProps) => {
   const ref = useRef<THREE.Points | null>(null);
 
   // Ensure positions are valid numbers and length is correct
   const [sphere] = useState<Float32Array>(() => {
     const positions = random.inSphere(new Float32Array(5000 * 3), { radius: 1.2 });
-    return positions.every((num) => !isNaN(num)) ? positions : new Float32Array(5000 * 3);
+    return positions.every((num: number) => !isNaN(num)) ? positions : new Float32Array(5000 * 3);
   });
 
   // Rotate the stars
